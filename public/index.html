@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Statistiques COVID Burkina Faso</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/ui-cropper.css">
+    <link rel="stylesheet" href="css/flipclock.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.css">
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css'
+        rel='stylesheet' />
+    <style>
+        .swiper-container {
+            width: 100%;
+            max-height: 50vw;
+        }
+
+        .white {
+            background: white;
+        }
+
+
+        .input-group-search {
+            height: 50px;
+        }
+
+        body::-webkit-scrollbar {
+            width: 1em;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background-color: darkgrey;
+            outline: 1px solid slategrey;
+        }
+
+        .search-nav {
+            z-index: 999999;
+            margin-top: 10px;
+            padding: 0px 10px 0px 10px;
+            /* height: 40px; */
+            width: 100%;
+            position: fixed;
+            top: 0;
+            transition: top 0.1s ease-in-out;
+
+        }
+
+        .nav-up {
+            top: -60px;
+        }
+
+        main {
+            height: 2000px;
+        }
+
+        main section {
+            font-size: 18px;
+            position: fixed;
+            top: 40%;
+            left: 5px;
+        }
+
+        main section a {
+            color: #000;
+            text-decoration: none;
+            background-color: #f5b335;
+            padding: 3px 10px;
+            border-radius: 10px;
+        }
+
+        /* libs Ovwerrides*/
+
+        .container {
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+
+        .progress-bar-animated {
+            -webkit-animation: progress-bar-stripes 0.08s linear infinite;
+            animation: progress-bar-stripes 0.08s linear infinite;
+        }
+
+        .progress {
+            border-radius: 0px;
+        }
+    </style>
+</head>
+
+<body ng-app="app">
+    <div class="container" style="margin-top: -3px;">
+        <!-- Header -->
+        <div class="row">
+            <div class="col">
+                <div class="card bg-dark text-white header">
+                    <div class="card-body" style="padding: 15px 20px 0px 20px;">
+                        <!-- <h5 class="card-title">Card title</h5> -->
+                        <!-- <p style="margin-bottom:1px">
+                        Location / Vente mini villa meublee a ouagadougou, quartier zone du bois
+                    </p> -->
+
+                        <div class="row">
+                            <div class="col">
+                                <strong class="text-warning" style="font-size: 1.3rem"> COVID-BF </strong>
+                            </div>
+                            <div class="col text-center">
+                                <a class="btn btn-outline-primary active mb-1" ng-class="idx==1? 'active': ''"
+                                    ui-sref="main">Accueil</a>
+                                <a class="btn btn-outline-primary" ng-class="idx==2? 'active': ''"
+                                    ui-sref="stat">Statistiques</a>
+                            </div>
+                            <div class="col">
+                                <small class="text-muted"> Dernière mise à jour:
+                                    <strong style="font-size:15px;"><i class="far fa-clock"></i> il y'a 5h</strong>
+                                </small>
+                            </div>
+                        </div>
+                        <div class="float-left ml-5">
+
+                        </div>
+                        <p class="float-right">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ui-view></ui-view>
+    <div class="row">
+        <div class="col text-center">
+            <img src="img/logo.jpeg" class="img-fluid" alt="">          
+        </div>
+    </div>
+    <!-- Footer -->
+    <div class="container mt-2" style="margin-bottom: -5px;">
+        <div class="row">
+            <div class="col">
+                <div class="card bg-dark text-white footer">
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">Card title</h5> -->
+
+                        <div class="row">
+                            <div class="col">
+                                <a class="btn btn-outline-danger" href="tel:3535"><i class="fa fa-phone"
+                                        aria-hidden="true"></i> Appel <strong>3535</strong></a>
+                            </div>
+                            <div class="col-auto">
+                                <a class="btn btn-outline-success" href="https://wa.me/22674706703/?text=Salut">
+                                    <i class="fab fa-whatsapp"></i> <strong>ChatBot</strong>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                                            content. This
+                                            content is a little bit longer.</p> -->
+                        <p class="card-text text-center">
+                            <small class="text-muted">Réalisé par <strong>Oumar YODA </strong> et <strong> Ismaël
+                                    OUEDRAOGO</strong></small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/flipclock.min.js"></script>
+    <script src="js/swiper.min.js"></script>
+
+    <script src="js/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-chart.min.js"></script>
+    <script src="js/angular-timeago.min.js"></script>
+    <script src="js/ui-cropper.js"></script>
+    <script src="js/angularfire.js"></script>
+    <script src="js/angular-flipclock.js"></script>
+    <script src="./js/angular-ui-router.js"></script>
+    <script src="./js/es6-promise.min.js"></script>
+    <script src="js/nativescript-webview-interface.js"></script>
+    <script src="js/angular-simple-logger.light.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.js"></script>
+    <script src="js/ui-leaflet.js"></script>
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+
+    <script src="app.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+    <script>
+        var config = {
+            apiKey: "AIzaSyAQ_XFIXfo-nlOApi73kXYRSrF9ZxsNHvs",
+            authDomain: "hellow-ebb4e.firebaseapp.com",
+            databaseURL: "https://hellow-ebb4e.firebaseio.com",
+            projectId: "hellow-ebb4e",
+            storageBucket: "hellow-ebb4e.appspot.com",
+            messagingSenderId: "350995055966"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+    <script>
+        // Hide Header on on scroll down
+        var didScroll;
+        var lastScrollTop = 0;
+        var delta = 5;
+        var navbarHeight = $('.search-nav').outerHeight();
+
+        $(window).scroll(function (event) {
+            didScroll = true;
+        });
+
+        setInterval(function () {
+            if (didScroll) {
+                hasScrolled();
+                didScroll = false;
+            }
+        }, 250);
+
+        function hasScrolled() {
+            var st = $(this).scrollTop();
+
+            // Make sure they scroll more than delta
+            if (Math.abs(lastScrollTop - st) <= delta)
+                return;
+
+            // If they scrolled down and are past the navbar, add class .nav-up.
+            // This is necessary so you never see what is "behind" the navbar.
+            if (st > lastScrollTop && st > navbarHeight) {
+                // Scroll Down
+                $('.search-nav').removeClass('nav-down').addClass('nav-up');
+            } else {
+                // Scroll Up
+                if (st + $(window).height() < $(document).height()) {
+                    $('.search-nav').removeClass('nav-up').addClass('nav-down');
+                }
+            }
+
+            lastScrollTop = st;
+        }
+    </script>
+</body>
+
+</html>

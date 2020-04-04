@@ -1,0 +1,45 @@
+<div ng-show="!cartEmpty" >
+    <table class="table">
+        <thead class="thead-dark table-sm ">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Item</th>
+                <th scope="col">Qty</th>
+                <th scope="col">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in cart" >
+                <th scope="row" >1</th>
+                <td >{{item.label}}</td>
+                <td >{{item.qty}}</td>
+                <td >{{item.price * item.qty}}</td>
+            </tr>
+        </tbody>
+        <tbody><tr>
+                <th scope="col"></th>
+                <th scope="col">Total</th>
+                <th scope="col"></th>
+                <th scope="col">{{cartTotal}}</th>
+            </tr>
+        </tbody><tfoot>
+
+        </tfoot>
+    </table>
+    <button class="btn btn-secondary  btn-block" ng-click="placeOrder()" role="button">Place Order</button>
+</div>
+
+
+<div ng-show="waintingForOrderAccepted" style="text-align:center; margin-top:50px" >
+    <img src="img/loader.gif">
+</div>
+<div ng-show="cartEmpty" style="text-align:center; margin-top:100px" >
+    <img src="img/empty-cart.png" class="img-fluid" style="width:75%">
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="alert alert-light" role="alert">
+        Your plate is Empty
+    </div>
+</div>

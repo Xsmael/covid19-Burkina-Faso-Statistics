@@ -1,0 +1,147 @@
+<style>
+h6 .fas {
+    margin-left: 3px;
+}
+</style>
+
+<div class="container-fluid">
+
+    <!-- Items -->
+<br>
+    <div class="row">
+        <div ng-repeat="item in items" ng-init="item.qty=0" class="col-lg-3 col-md-6 col-sm-6 col-xs-12" >
+            <div class="card mb-4 bg-light">
+                <img class="card-img-top" ng-src="{{item.imgUrl}}">
+                <div class="card-body">
+    
+
+                     <div class="row">
+                         <div class="col">
+                            <h6> <i class="fas fa-map-marker-alt"></i> Patte d'Oie</h6>
+                            <h4> 350.000F CFA</h4>
+                        </div>
+                        <div class="col-auto">
+                            <h5>275 m2</h5>
+                        </div>
+                    </div>
+
+                    <div class="row" style="white-space:nowrap; margin-left:-25px">
+                        <div class="col-2">
+                            <h6>2<i class="fas fa-swimmer"></i></h6>
+                        </div>
+                        <div class="col-2">
+                            <h6>2<i class="fas fa-bed"></i></h6>
+                        </div>
+                        <div class="col-2">
+                            <h6>2<i class="fas fa-shower"></i></h6>
+                        </div>
+                        <!-- <div class="col-2">
+                            <h6>2<i class="fas fa-bath"></i></h6>
+                        </div> -->
+                        <!-- <div class="col-2">
+                            <h6>2<i class="fas fa-couch"></i></h6>
+                        </div> -->
+                        <!-- <div class="col-2">
+                            <h6>2<i class="fas fa-warehouse"></i></h6>
+                        </div> -->
+                        <div class="col-2">
+                            <h6>2<i class="fas fa-car"></i></h6>
+                        </div>
+                        <div class="col-2">
+                            <h6>2<i class="fas fa-chair"></i></h6>
+                        </div>
+                        <div class="col-2">
+                            <h6>2<i class="fas fa-tv"></i></h6>
+                        </div>
+                            <h6>2<i class="fas fa-store-alt"></i></h6>
+                        </div>
+                        <div class="col-2">
+                            <h6>2<i class="fas fa-tree"></i></h6>
+                        </div>
+                        <div class="col-2">
+                            <h6>2<i class="fas fa-utensils"></i></h6>
+                        </div>
+                        <div class="col-2">
+                            <h6>2<i class="fas fa-wifi"></i></h6>
+                        </div>
+                    </div>
+                            <!--
+                    <div class="row">
+                        <div class="col">
+                            <h5> ajouté il y'a 2 semaines</h5>
+                        </div>
+                        <div class="col">
+                            <h5> 564 views</h5>
+                        </div>
+                    </div> -->
+    
+                    <div ng-show="addedToCart &amp;&amp; item.qty>0" class="input-group ">
+                        <span class="input-group-prepend">
+                            <span class="input-group-text " id="basic-addon1">{{ item.price * item.qty}} Rs.</span>
+                            <button ng-click="remove(item);" class="btn btn-outline-secondary border" type="button">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </span>
+    
+                        <input ng-model="item.qty" limit-max="" class="form-control border" type="number" value="0">
+                        <span class="input-group-append">
+                            <button ng-click="add(item);" class="btn btn-outline-secondary border " type="button">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                content. This
+                content is a little bit longer.</p>
+            <p class="card-text">
+                <small class="text-muted">Last updated 3 mins ago</small>
+            </p>
+        </div>
+        <img class="card-img-bottom" src="img/wired.png" alt="Card image cap">
+    </div>
+</div>
+
+<nav ng-show="totalItemsInCart>0" class="navbar fixed-bottom navbar-dark bg-danger  " style="padding-bottom:0px; padding-top:0px;">
+    <span class="navbar-brand" href="#">
+        <i class="fa fa-shopping-cart"></i>
+    </span>
+    <span class="navbar-text" style="text-align:center ;color:white; padding-bottom:0px; padding-top:0px;">
+        <h5 class="">
+            {{totalItemsInCart}} items in cart
+        </h5>
+        Proceed
+    </span>
+    <spam class="form-inline my-2 my-lg-0">
+        <button ui-sref="cart" class="btn btn-danger btn-lg" type="submit" href="#!/cart">
+            <i class="fa fa-chevron-right"></i>
+        </button>
+    </spam>
+</nav>
+
+<script>
+    var adsSwiper = new Swiper('.adsSwiper', {
+        // Optional parameters
+        loop: true,
+
+        centeredSlides: true,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+        // If we need pagination
+        pagination: {
+            el: '.swiper-pagination',
+        },
+    })
+</script>
+
+
+

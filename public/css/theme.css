@@ -1,0 +1,17 @@
+  
+.top_cont_outer {
+    background: #1e1f20 !important;
+}
+
+.options-large li a {
+    color: #ff1a4b  !important;
+} 
+
+@font-face {
+    src: url(../fonts/ATOSalutino.ttf);
+    font-family: "salutino";
+}
+@font-face {
+    src: url(../fonts/AspergitLight.otf);
+    font-family: "aspergit";
+}

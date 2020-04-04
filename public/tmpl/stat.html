@@ -1,0 +1,92 @@
+<div class="container">
+
+    <!-- Pie Chart -->
+    <div class="card text-center mt-4">
+        <div class="card-body">
+
+            <div class="row">
+                <div class="col"></div>
+                <div class="col ">
+                    <div style="width: 100%; height: auto; float: left; position: relative;">
+                        <div
+                            style="width: 100%; height: 30px; position: absolute; top: 35%; left: 0; margin-top: 10px; line-height:19px; text-align: center; z-index: 999999999999999">
+                            <h3 style="font-size: 1em; margin-top: 25px; margin-bottom: -20px;">Total:</h3>
+                            <h1 style="font-weight:bold; font-size: calc(70px + 1.5vw);  color: gray;">{{totalCases.confirmed}}</h1>
+                        </div>
+                        <canvas id="doughnut" class="chart chart-doughnut" chart-labels="OperatorSent.labels"
+                             height="500" chart-data="OperatorSent.data" chart-colors="OperatorSent.colors"
+                            chart-options="OperatorSent.options">
+                        </canvas>
+                    </div>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Line Chart -->
+    <div class="card text-center mt-4">
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <canvas id="line" class="chart chart-line" chart-data="casesChart.data"
+                        chart-labels="casesChart.labels" chart-series="casesChart.series"
+                        chart-options="casesChart.options">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Details Table -->
+    <div class="card text-center mt-4">
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <h3>Situations des villes</h3>
+                    <table class="table table-striped table-hover table-inverse table-responsive">
+                        <thead class="thead-inverse">
+                            <tr>
+                                <th style="width: 70%;">Ville</th>
+                                <th style="width: 100%;">Cas confirmés</th>
+                                <th>Guéris</th>
+                                <th>Décès</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="ville in villes">
+                                <td scope="row"> {{ville.name}} </td>
+                                <td> {{ville.cases}} </td>
+                                <td> {{ville.healed}} </td>
+                                <td> {{ville.dead}} </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Map Block -->
+    <!-- <div class="row mt-4 mb-4">
+        <div class="col">
+            <div class="card">
+                <div class="card-body map-card" ng-controller="LeafController">
+                    <leaflet lf-center="center" markers="markers" controls="controls" height="20vh" width="100%"
+                        style="min-height:500px;"></leaflet>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- Map Block -->
+    <div class="row mt-4 mb-4">
+        <div class="col">
+            <div class="card">
+                <div class="card-body map-card" ng-controller="LeafController">
+                    <iframe width="100%" height="500px" frameborder="0" allowfullscreen src="//umap.openstreetmap.fr/en/map/burkina-faso-diffusion-du-covid-19_436638?scaleControl=true&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=false&searchControl=null&tilelayersControl=false&embedControl=false&datalayersControl=true&onLoadPanel=caption&captionBar=true&editinosmControl=false&measureControl=false&locateControl=false#7/12.034/-2.197"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

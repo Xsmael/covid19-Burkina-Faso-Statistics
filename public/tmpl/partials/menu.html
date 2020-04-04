@@ -1,0 +1,29 @@
+<style>
+body {
+    margin: 30px 0px 0px 0px;
+    padding-top: 40px;
+    /* margin: 2%; */
+}
+</style>  
+  
+  <!-- Menu Bar -->
+   <div class="btn-group btn-group-lg d-flex" role="group" aria-label="Basic example">
+        <button type="button" class="btn  btn-outline-secondary w-100">Achat</button>
+        <button type="button" class="btn  btn-outline-secondary w-100">Location</button>
+        <button type="button" class="btn  btn-outline-secondary w-100">Vente</button>
+      </div>
+    <div class="search-nav nav-down" ng-show="displaySearchBar">
+        <div class="input-group input-group-search ">
+            <input class="form-control py-2  border-left-0 border-right-0 border" type="search" placeholder="Search..." id="search">
+            <span class="input-group-append">
+
+                <button ng-click="search()" class="btn btn-outline-secondary border-left-0 border-right-0 border white" type="button">
+                    <i class="fa fa-search"></i>
+                </button>
+ 
+
+            </span>
+        </div>
+    </div>
+
+    <!-- /Menu Bar -->
